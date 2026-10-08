@@ -169,3 +169,7 @@ Packages/packages-lock.json linguist-generated
 
 # Exceptions for .asset files such as lightning pre-baking
 LightingData.asset     binary
+
+# TerrainData is saved as binary even in Force Text mode. The *.asset text rule
+# above would strip CR bytes from it and corrupt the terrain, so store it in LFS.
+Assets/_Project/Terrain/**/*.asset    lfs
