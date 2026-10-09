@@ -27,7 +27,7 @@ public class RCCarController : MonoBehaviour
     [Header("Torque (N.m per wheel)")]
     [SerializeField] private float maxMotorTorque = 0.12f;
     [SerializeField] private float maxBrakeTorque = 0.12f;
-    [SerializeField] private float handBrakeTorque = 0.3f;
+    [SerializeField] private float handBrakeTorque = 0.06f;
     [SerializeField] private float coastBrakeTorque = 0.01f;
 
 
@@ -43,7 +43,8 @@ public class RCCarController : MonoBehaviour
 
 
     [Header("Handbrake")]
-    [SerializeField] private float handBrakeRearGrip = 0.5f;
+    [SerializeField] private float handBrakeRearGrip = 0.65f;
+    [SerializeField] private float rearGripChangeRate = 2f;
 
 
     [Header("Anti-Roll")]
@@ -62,6 +63,7 @@ public class RCCarController : MonoBehaviour
 
     private float currentSteerAngle;
     private float rearSidewaysStiffness;
+    private float currentRearGrip = 1f;
 
     private void Awake()
     {
@@ -124,14 +126,12 @@ public class RCCarController : MonoBehaviour
         else if (!IsOverSpeed(forwardSpeed))
             motor = throttleInput * maxMotorTorque;
 
-        if (handBrakeInput)
-            motor = 0f;
-
         float frontMotor = driveType == DriveType.AllWheel ? motor : 0f;
+        float rearMotor = handBrakeInput ? 0f : motor;
         frontLeft.motorTorque = frontMotor;
         frontRight.motorTorque = frontMotor;
-        rearLeft.motorTorque = motor;
-        rearRight.motorTorque = motor;
+        rearLeft.motorTorque = rearMotor;
+        rearRight.motorTorque = rearMotor;
 
         float rearBrake = handBrakeInput ? handBrakeTorque : brake;
         frontLeft.brakeTorque = brake;
@@ -145,7 +145,10 @@ public class RCCarController : MonoBehaviour
 
     private void ApplyHandBrakeGrip()
     {
-        float stiffness = handBrakeInput ? rearSidewaysStiffness * handBrakeRearGrip : rearSidewaysStiffness;
+        float targetGrip = handBrakeInput ? handBrakeRearGrip : 1f;
+        currentRearGrip = Mathf.MoveTowards(currentRearGrip, targetGrip, rearGripChangeRate * Time.fixedDeltaTime);
+
+        float stiffness = rearSidewaysStiffness * currentRearGrip;
         SetSidewaysStiffness(rearLeft, stiffness);
         SetSidewaysStiffness(rearRight, stiffness);
     }
