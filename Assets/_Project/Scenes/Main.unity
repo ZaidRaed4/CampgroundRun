@@ -651,13 +651,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 330585543}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.12278779, y: -0.6963643, z: 0.12278779, w: 0.6963643}
-  m_LocalPosition: {x: 47, y: 8.5, z: -15}
+  m_LocalRotation: {x: 0.13052616, y: 0, z: 0, w: 0.9914449}
+  m_LocalPosition: {x: 0, y: 6, z: -14}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 20, y: -90, z: 0}
+  m_Father: {fileID: 348587793}
+  m_LocalEulerAnglesHint: {x: 15, y: 0, z: 0}
 --- !u!114 &330585547
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -747,6 +747,7 @@ GameObject:
   m_Component:
   - component: {fileID: 348587793}
   - component: {fileID: 348587792}
+  - component: {fileID: 348587794}
   m_Layer: 7
   m_Name: Rv
   m_TagString: Untagged
@@ -798,8 +799,36 @@ Transform:
   - {fileID: 334621372}
   - {fileID: 77708052}
   - {fileID: 378987209}
+  - {fileID: 330585546}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
+--- !u!114 &348587794
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 348587791}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 228bf969275d9c842b571cbfdbafe76a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RVcontroller
+  frontLeft: {fileID: 284228038}
+  frontRight: {fileID: 419475670}
+  rearLeft: {fileID: 180797164}
+  rearRight: {fileID: 1327072116}
+  frontLeftMesh: {fileID: 914668093}
+  frontRightMesh: {fileID: 514501423}
+  rearLeftMesh: {fileID: 365222768}
+  rearRightMesh: {fileID: 414608640}
+  maxMotorTorque: 2500
+  maxBrakeTorque: 4000
+  handBrakeTorque: 8000
+  coastBrakeToque: 200
+  maxForwardSpeed: 25
+  maxReverseSpeed: 6
+  maxSteerAngle: 30
 --- !u!1 &362729060
 GameObject:
   m_ObjectHideFlags: 0
@@ -3975,5 +4004,4 @@ SceneRoots:
   - {fileID: 832575519}
   - {fileID: 1693359185}
   - {fileID: 478374195}
-  - {fileID: 330585546}
   - {fileID: 348587793}
