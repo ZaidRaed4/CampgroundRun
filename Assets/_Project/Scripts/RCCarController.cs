@@ -25,25 +25,25 @@ public class RCCarController : MonoBehaviour
 
 
     [Header("Torque (N.m per wheel)")]
-    [SerializeField] private float maxMotorTorque = 0.12f;
-    [SerializeField] private float maxBrakeTorque = 0.12f;
-    [SerializeField] private float handBrakeTorque = 0.06f;
-    [SerializeField] private float coastBrakeTorque = 0.01f;
+    [SerializeField] private float maxMotorTorque = 0.096f;
+    [SerializeField] private float maxBrakeTorque = 0.072f;
+    [SerializeField] private float handBrakeTorque = 0.048f;
+    [SerializeField] private float coastBrakeTorque = 0.008f;
 
 
     [Header("Limits")]
-    [SerializeField] private float maxForwardSpeed = 15f;
+    [SerializeField] private float maxForwardSpeed = 10f;
     [SerializeField] private float maxReverseSpeed = 4f;
 
 
     [Header("Steering")]
-    [SerializeField] private float maxSteerAngle = 30f;
+    [SerializeField] private float maxSteerAngle = 20f;
     [SerializeField] private float highSpeedSteerAngle = 6f;
-    [SerializeField] private float steerRate = 180f;
+    [SerializeField] private float steerRate = 60f;
 
 
     [Header("Handbrake")]
-    [SerializeField] private float handBrakeRearGrip = 0.65f;
+    [SerializeField] private float handBrakeRearGrip = 1f;
     [SerializeField] private float rearGripChangeRate = 2f;
 
 

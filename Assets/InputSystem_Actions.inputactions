@@ -1083,7 +1083,7 @@
                 {
                     "name": "",
                     "id": "880d1002-1b93-46cb-8b82-75c02ba8d67b",
-                    "path": "<Keyboard>/space",
+                    "path": "<Keyboard>/leftShift",
                     "interactions": "",
                     "processors": "",
                     "groups": ";Keyboard&Mouse",
